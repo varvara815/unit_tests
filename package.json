@@ -5,7 +5,8 @@
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "build": "babel utils --out-dir dist",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "precommit": "npm run test && npm run lint && npm run build"
   },
   "devDependencies": {
     "@babel/cli": "^7.27.0",
@@ -21,8 +22,5 @@
     "husky": "^9.1.7",
     "typescript-eslint": "^8.31.1",
     "vitest": "^3.1.1"
-  },
-  "hooks": {
-    "pre-commit": "npm run test && npm run lint && npm run build"
   }
 }
