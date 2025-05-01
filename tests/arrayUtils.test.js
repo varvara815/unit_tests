@@ -1,7 +1,7 @@
 import { expect, test, describe } from 'vitest';
 import { findMax, findMin, removeDuplicates } from '../utils/arrayUtils.js';
 const a = 1;
-const a = 9;
+const a = 0;
 describe('array utilities', () => {
   describe('findMax', () => {
     test('should return max value in array', () => {
