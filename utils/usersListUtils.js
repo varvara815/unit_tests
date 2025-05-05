@@ -7,7 +7,7 @@
  */
 export function filterUsersByAge(users, minAge, maxAge) {
   if (!Array.isArray(users)) {
-    throw new Error("Users must be an array");
+    throw new Error('Users must be an array');
   }
   return users.filter((user) => user.age >= minAge && user.age <= maxAge);
 }
@@ -19,7 +19,7 @@ export function filterUsersByAge(users, minAge, maxAge) {
  */
 export function sortUsersByName(users) {
   if (!Array.isArray(users)) {
-    throw new Error("Users must be an array");
+    throw new Error('Users must be an array');
   }
   return [...users].sort((a, b) => a.name.localeCompare(b.name));
 }
@@ -32,7 +32,7 @@ export function sortUsersByName(users) {
  */
 export function findUserById(users, id) {
   if (!Array.isArray(users)) {
-    throw new Error("Users must be an array");
+    throw new Error('Users must be an array');
   }
   return users.find((user) => user.id === id) || null;
 }
@@ -45,7 +45,7 @@ export function findUserById(users, id) {
  */
 export function isEmailTaken(users, email) {
   if (!Array.isArray(users)) {
-    throw new Error("Users must be an array");
+    throw new Error('Users must be an array');
   }
   return users.some((user) => user.email === email);
 }
