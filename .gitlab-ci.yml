@@ -1,8 +1,29 @@
-stages:
-  - lint
+name: Lint
+on:
+  push:
+    branches:
+      - main
+      - test-branch-2
+  pull_request:
+    branches:
+      - main
+      - test-branch-2
 
+jobs:
   lint:
-    stage: lint
-    script:
-      - npm install
-      - npx eslint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run ESLint
+        run: npm run lint
