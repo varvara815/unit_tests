@@ -3,11 +3,11 @@ on:
   push:
     branches:
       - main
-      - test-branch-2
+      - test-branch-3
   pull_request:
     branches:
       - main
-      - test-branch-2
+      - test-branch-3
 
 jobs:
   lint:
