@@ -18,7 +18,7 @@ export function checkStudentKnowledge(studentAnswers, correctAnswers) {
     }
   }
 
-  for (const key of studentKeys) {
+  for (let key of studentKeys) {
     if (studentAnswers[key] !== correctAnswers[key]) {
       return false;
     }
