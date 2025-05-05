@@ -1,21 +1,29 @@
-env:
-  browser: true
-  node: true
+name: Lint
+on:
+  push:
+    branches:
+      - main
+      - test-branch-3
+  pull_request:
+    branches:
+      - main
+      - test-branch-3
 
-parserOptions:
-  ecmaVersion: 2021
-  sourceType: module
+jobs:
+  lint:
+    runs-on: ubuntu-latest
 
-rules:
-  quotes: ['error', 'single']
-  max-len: ['error', { code: 120 }]
-  semi: ['error', 'always']
-  indent: ['error', 2]
-  'no-trailing-spaces': 'error'
-  'eol-last': ['error', 'always']
-  'no-multiple-empty-lines': ['error', { max: 1 }]
-  'comma-dangle': ['error', 'always-multiline']
-  'object-curly-spacing': ['error', 'always']
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-globals:
-  exampleGlobal: true
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run ESLint
+        run: npm run lint
