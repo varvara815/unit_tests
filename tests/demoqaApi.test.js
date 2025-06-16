@@ -21,6 +21,7 @@ let token = null;
  */
 async function fetchApi(endpoint, options = {}) {
   try {
+    // eslint-disable-next-line no-undef
     const response = await fetch(`${baseUrl}${endpoint}`, options);
 
     if (response.status === 204) {
@@ -55,7 +56,7 @@ describe.sequential('API Testing with DemoQA', () => {
    * Test 1: Positive test for creating a user
    * Creates a new user with valid data and verifies the response
    */
-  it('Should successfully create a new user', async () => {
+  it('Should successfully create a new user', async() => {
     const response = await fetchApi('/Account/v1/User', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -84,7 +85,7 @@ describe.sequential('API Testing with DemoQA', () => {
    * Test 2: Negative test for creating a user
    * Attempts to create a user with empty password and verifies the error
    */
-  it('Should fail to create a user with empty password', async () => {
+  it('Should fail to create a user with empty password', async() => {
     const response = await fetchApi('/Account/v1/User', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -108,7 +109,7 @@ describe.sequential('API Testing with DemoQA', () => {
    * Test 3: Positive test for generating a token
    * Generates a token for the created user and verifies the response
    */
-  it('Should generate token for existing user', async () => {
+  it('Should generate token for existing user', async() => {
     // Skip test if user was not created
     if (!userId) {
       return;
@@ -130,7 +131,7 @@ describe.sequential('API Testing with DemoQA', () => {
     expect(response.data).toHaveProperty('status', 'Success');
     expect(response.data).toHaveProperty(
       'result',
-      'User authorized successfully.'
+      'User authorized successfully.',
     );
 
     // Save token for subsequent tests
@@ -141,7 +142,7 @@ describe.sequential('API Testing with DemoQA', () => {
    * Test 4: Negative test for generating a token
    * Attempts to generate a token with incorrect password and verifies the error
    */
-  it('Should fail to generate token with incorrect password', async () => {
+  it('Should fail to generate token with incorrect password', async() => {
     // Skip test if user was not created
     if (!userId) {
       return;
@@ -163,7 +164,7 @@ describe.sequential('API Testing with DemoQA', () => {
     expect(response.data).toHaveProperty('status', 'Failed');
     expect(response.data).toHaveProperty(
       'result',
-      'User authorization failed.'
+      'User authorization failed.',
     );
   });
 
@@ -171,7 +172,7 @@ describe.sequential('API Testing with DemoQA', () => {
    * Test 5: Positive test for retrieving user information
    * Gets information about the created user and verifies the response
    */
-  it('Should successfully retrieve user information', async () => {
+  it('Should successfully retrieve user information', async() => {
     // Skip test if token or user ID is missing
     if (!token || !userId) {
       return;
@@ -194,7 +195,7 @@ describe.sequential('API Testing with DemoQA', () => {
    * Test 6: Negative test for retrieving user information
    * Attempts to get information about a non-existent user and verifies the error
    */
-  it('Should fail to retrieve information for non-existent user', async () => {
+  it('Should fail to retrieve information for non-existent user', async() => {
     // Skip test if token is missing
     if (!token) {
       return;
@@ -216,7 +217,7 @@ describe.sequential('API Testing with DemoQA', () => {
    * Test 7: Positive test for deleting a user
    * Deletes the created user and verifies the response
    */
-  it('Should successfully delete user', async () => {
+  it('Should successfully delete user', async() => {
     // Skip test if token or user ID is missing
     if (!token || !userId) {
       return;
@@ -237,7 +238,7 @@ describe.sequential('API Testing with DemoQA', () => {
    * Test 8: Negative test for deleting a user
    * Attempts to delete a non-existent user and verifies the error
    */
-  it('Should fail to delete non-existent user', async () => {
+  it('Should fail to delete non-existent user', async() => {
     // Skip test if token is missing
     if (!token) {
       return;

@@ -114,7 +114,7 @@ describe('API Mocking and Validation Tests', () => {
    * Test for successful API response (200 OK)
    * Verifies that the response contains all expected user data with correct values
    */
-  it('Mock Successful Response', async () => {
+  it('Mock Successful Response', async() => {
     // Make a request to get user with ID 1
     const response = await UserApiMock.getUser(1);
 
@@ -135,7 +135,7 @@ describe('API Mocking and Validation Tests', () => {
    * Test for No Content response (204)
    * Verifies that the API correctly returns a 204 status with no content
    */
-  it('Mock 204 No Content Response', async () => {
+  it('Mock 204 No Content Response', async() => {
     // Make a request to get user with ID 2
     const response = await UserApiMock.getUser(2);
 
@@ -147,7 +147,7 @@ describe('API Mocking and Validation Tests', () => {
    * Test for Forbidden response (403)
    * Verifies that the API correctly returns a 403 status with appropriate error details
    */
-  it('Mock 403 Forbidden Response', async () => {
+  it('Mock 403 Forbidden Response', async() => {
     // Make a request to get user with ID 3
     const response = await UserApiMock.getUser(3);
 
@@ -161,7 +161,7 @@ describe('API Mocking and Validation Tests', () => {
    * Test for Not Found response (404)
    * Verifies that the API correctly returns a 404 status when requesting non-existent users
    */
-  it('Mock 404 Not Found Response', async () => {
+  it('Mock 404 Not Found Response', async() => {
     // Make a request to get user with ID 999
     const response = await UserApiMock.getUser(999);
 
@@ -176,7 +176,7 @@ describe('API Mocking and Validation Tests', () => {
    * Test for Bad Gateway response (502)
    * Verifies that the API correctly returns a 502 status when server errors occur
    */
-  it('Mock 502 Bad Gateway Response', async () => {
+  it('Mock 502 Bad Gateway Response', async() => {
     // Make a request to get user with ID 4
     const response = await UserApiMock.getUser(4);
 
@@ -190,7 +190,7 @@ describe('API Mocking and Validation Tests', () => {
    * Test for Network Error
    * Verifies that the API correctly throws an error when network problems occur
    */
-  it('Mock Network Error', async () => {
+  it('Mock Network Error', async() => {
     // Make a request to get user with ID 5 and expect a network error
     await expect(UserApiMock.getUser(5)).rejects.toThrow('Network Error');
   });
